@@ -1,0 +1,24 @@
+@model APIwebbanhangnhe.Models.ViewModels.PlayerCardFormViewModel
+@{
+    ViewData["Title"] = "Thêm thẻ cầu thủ";
+}
+
+<div class="page-heading">
+    <div>
+        <span class="eyebrow">Add Card</span>
+        <h1>Them the cau thu moi</h1>
+    </div>
+    <a class="btn btn-outline-dark" asp-action="Index">Quay lai</a>
+</div>
+
+<form asp-action="Add" method="post" enctype="multipart/form-data" class="form-shell">
+    <partial name="_Form" model="Model" />
+    <div class="action-row">
+        <button type="submit" class="btn btn-warning">Luu the</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Huy</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+.idea/
+.vscode/
+.nuget/
+.appdata/
+.user/
+NuGet/
+wwwroot/images/player-cards/uploads/

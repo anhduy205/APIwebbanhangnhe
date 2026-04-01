@@ -1,0 +1,59 @@
+@model APIwebbanhangnhe.Models.PlayerCard
+@{
+    ViewData["Title"] = "Chi tiết thẻ cầu thủ";
+}
+
+<div class="page-heading">
+    <div>
+        <span class="eyebrow">Card Details</span>
+        <h1>@Model.Title</h1>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-action="Update" asp-route-id="@Model.Id">Sua</a>
+        <a class="btn btn-outline-dark" asp-action="Index">Quay lai</a>
+    </div>
+</div>
+
+<div class="detail-layout">
+    <section class="panel-card media-panel">
+        <img src="@Model.ImageUrl" alt="@Model.PlayerName" class="detail-image" />
+        @if (Model.Images.Any())
+        {
+            <div class="gallery-grid mt-3">
+                @foreach (var image in Model.Images)
+                {
+                    <img src="@image.Url" alt="@Model.PlayerName gallery" class="gallery-thumb" />
+                }
+            </div>
+        }
+    </section>
+
+    <section class="panel-card">
+        <div class="player-card-topline mb-3">
+            <span class="rarity-pill">@Model.Rarity</span>
+            <span class="price-tag">@Model.Price.ToString("N0") VNĐ</span>
+        </div>
+        <dl class="detail-list">
+            <div>
+                <dt>Cau thu</dt>
+                <dd>@Model.PlayerName</dd>
+            </div>
+            <div>
+                <dt>CLB</dt>
+                <dd>@Model.Club</dd>
+            </div>
+            <div>
+                <dt>Vi tri</dt>
+                <dd>@Model.Position</dd>
+            </div>
+            <div>
+                <dt>Danh muc</dt>
+                <dd>@Model.Category?.Name</dd>
+            </div>
+            <div>
+                <dt>Mo ta</dt>
+                <dd>@Model.Description</dd>
+            </div>
+        </dl>
+    </section>
+</div>

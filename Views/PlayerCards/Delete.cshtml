@@ -1,0 +1,27 @@
+@model APIwebbanhangnhe.Models.PlayerCard
+@{
+    ViewData["Title"] = "Xóa thẻ cầu thủ";
+}
+
+<div class="page-heading">
+    <div>
+        <span class="eyebrow">Delete Card</span>
+        <h1>Xoa the cau thu</h1>
+    </div>
+    <a class="btn btn-outline-dark" asp-action="Index">Quay lai</a>
+</div>
+
+<form asp-action="Delete" method="post" class="panel-card form-shell">
+    <input type="hidden" asp-for="Id" />
+    <div class="delete-grid">
+        <img src="@Model.ImageUrl" alt="@Model.PlayerName" class="thumb-image thumb-image-lg" />
+        <div>
+            <p class="lead mb-2">Ban chac chan muon xoa <strong>@Model.Title</strong>?</p>
+            <p class="text-muted">@Model.PlayerName • @Model.Category?.Name • @Model.Price.ToString("N0") VNĐ</p>
+        </div>
+    </div>
+    <div class="action-row">
+        <button type="submit" class="btn btn-danger">Xac nhan xoa</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Huy</a>
+    </div>
+</form>

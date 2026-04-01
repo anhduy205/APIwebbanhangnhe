@@ -1,0 +1,22 @@
+@model APIwebbanhangnhe.Models.Category
+@{
+    ViewData["Title"] = "Xóa danh mục";
+}
+
+<div class="page-heading">
+    <div>
+        <span class="eyebrow">Delete Category</span>
+        <h1>Xoa danh muc</h1>
+    </div>
+    <a class="btn btn-outline-dark" asp-action="Index">Quay lai</a>
+</div>
+
+<form asp-action="Delete" method="post" class="panel-card form-shell">
+    <input type="hidden" asp-for="Id" />
+    <p class="lead mb-2">Ban chac chan muon xoa danh muc <strong>@Model.Name</strong>?</p>
+    <p class="text-muted">Neu danh muc dang co the cau thu thi he thong se khong cho phep xoa.</p>
+    <div class="action-row">
+        <button type="submit" class="btn btn-danger">Xac nhan xoa</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Huy</a>
+    </div>
+</form>

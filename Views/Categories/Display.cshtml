@@ -1,0 +1,66 @@
+@model APIwebbanhangnhe.Models.Category
+@{
+    ViewData["Title"] = "Chi tiết danh mục";
+}
+
+<div class="page-heading">
+    <div>
+        <span class="eyebrow">Category Details</span>
+        <h1>@Model.Name</h1>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-action="Update" asp-route-id="@Model.Id">Sua</a>
+        <a class="btn btn-outline-dark" asp-action="Index">Quay lai</a>
+    </div>
+</div>
+
+<div class="detail-layout">
+    <section class="panel-card">
+        <dl class="detail-list">
+            <div>
+                <dt>Ten danh muc</dt>
+                <dd>@Model.Name</dd>
+            </div>
+            <div>
+                <dt>Mo ta</dt>
+                <dd>@Model.Description</dd>
+            </div>
+            <div>
+                <dt>Thu tu</dt>
+                <dd>@Model.DisplayOrder</dd>
+            </div>
+            <div>
+                <dt>So luong the</dt>
+                <dd>@Model.PlayerCards.Count</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section class="panel-card">
+        <div class="section-heading mb-3">
+            <div>
+                <span class="eyebrow">Cards In Category</span>
+                <h2>Cac the dang thuoc danh muc nay</h2>
+            </div>
+        </div>
+        @if (Model.PlayerCards.Any())
+        {
+            <div class="stack-list">
+                @foreach (var card in Model.PlayerCards)
+                {
+                    <div class="stack-item">
+                        <div>
+                            <strong>@card.Title</strong>
+                            <div class="text-muted">@card.PlayerName</div>
+                        </div>
+                        <a asp-controller="PlayerCards" asp-action="Display" asp-route-id="@card.Id">Xem the</a>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted mb-0">Danh muc nay chua co the cau thu nao.</p>
+        }
+    </section>
+</div>

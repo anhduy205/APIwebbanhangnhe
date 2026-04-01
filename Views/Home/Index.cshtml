@@ -1,0 +1,71 @@
+@model APIwebbanhangnhe.Models.ViewModels.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="page-heading">
+    <div>
+        <h1>Bai tap tuan 06</h1>
+        <p class="text-muted mb-0">
+            Ung dung ASP.NET Core MVC quan ly the cau thu Viet Nam, co Category va upload anh.
+        </p>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-primary" asp-controller="PlayerCards" asp-action="Add">Them the</a>
+        <a class="btn btn-outline-secondary" asp-controller="Categories" asp-action="Add">Them category</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="panel-card h-100">
+            <h2 class="h4">Danh sach category</h2>
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Order</th>
+                        <th>Cards</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <tr>
+                            <td>@category.Name</td>
+                            <td>@category.DisplayOrder</td>
+                            <td>@category.PlayerCards.Count</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="panel-card h-100">
+            <h2 class="h4">The cau thu noi bat</h2>
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th>Card</th>
+                        <th>Player</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var card in Model.FeaturedCards)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="PlayerCards" asp-action="Display" asp-route-id="@card.Id">@card.Title</a>
+                            </td>
+                            <td>@card.PlayerName</td>
+                            <td>@card.Price.ToString("N0")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

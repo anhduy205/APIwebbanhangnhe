@@ -12,6 +12,8 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Category> Categories => Set<Category>();
 
+    public DbSet<Product> Products => Set<Product>();
+
     public DbSet<PlayerCard> PlayerCards => Set<PlayerCard>();
 
     public DbSet<PlayerCardImage> PlayerCardImages => Set<PlayerCardImage>();
@@ -26,6 +28,10 @@ public class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<PlayerCard>()
             .Property(playerCard => playerCard.Price)
+            .HasColumnType("decimal(18,2)");
+
+        modelBuilder.Entity<Product>()
+            .Property(product => product.Price)
             .HasColumnType("decimal(18,2)");
 
         modelBuilder.Entity<PlayerCard>()
@@ -68,6 +74,29 @@ public class ApplicationDbContext : DbContext
                 Name = "Rising Talents",
                 Description = "Những gương mặt trẻ đầy triển vọng của bóng đá Việt Nam.",
                 DisplayOrder = 4
+            });
+
+        modelBuilder.Entity<Product>().HasData(
+            new Product
+            {
+                Id = 1,
+                Name = "Sony WH-CH520",
+                Price = 1190000,
+                Description = "Wireless on-ear headphone for daily listening and online study."
+            },
+            new Product
+            {
+                Id = 2,
+                Name = "JBL Tune 720BT",
+                Price = 1690000,
+                Description = "Bluetooth headphone with strong bass and long battery life."
+            },
+            new Product
+            {
+                Id = 3,
+                Name = "SoundPEATS Air4 Lite",
+                Price = 1290000,
+                Description = "Compact true wireless earbuds with a clear microphone for calls."
             });
 
         modelBuilder.Entity<PlayerCard>().HasData(

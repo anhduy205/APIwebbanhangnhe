@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product CRUD Demo</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">VS xanh - Product CRUD</p>
+                <h1>Product CRUD Demo</h1>
+                <p class="hero-copy">
+                    Nhap API URL tu project ASP.NET Core o Visual Studio, sau do them, sua, xem va xoa san pham.
+                </p>
+            </div>
+            <div class="hero-actions">
+                <a class="ghost-link" href="/swagger" target="_blank" rel="noreferrer">Open Swagger</a>
+            </div>
+        </section>
+
+        <section class="panel connection-panel">
+            <div class="field grow">
+                <label for="apiUrl">API URL</label>
+                <input id="apiUrl" type="text" value="http://localhost:5030/api/ProductApi" />
+            </div>
+            <div class="connection-actions">
+                <button id="btnConnect" class="primary-btn" type="button">Load products</button>
+                <span id="statusBadge" class="status-badge idle">Not connected</span>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <section class="panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Form</p>
+                        <h2 id="formTitle">Add product</h2>
+                    </div>
+                    <button id="btnReset" class="secondary-btn" type="button">Reset</button>
+                </div>
+
+                <form id="productForm" novalidate>
+                    <input id="productId" type="hidden" />
+
+                    <div class="field">
+                        <label for="productName">Product name</label>
+                        <input id="productName" type="text" maxlength="120" required />
+                    </div>
+
+                    <div class="field">
+                        <label for="price">Price</label>
+                        <input id="price" type="number" min="0.01" step="0.01" required />
+                    </div>
+
+                    <div class="field">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="5" maxlength="600"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button id="btnSave" class="primary-btn" type="submit">Save product</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel detail-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Read</p>
+                        <h2>Product detail</h2>
+                    </div>
+                </div>
+
+                <div id="detailCard" class="detail-card empty">
+                    <p>Select a product from the list to view details.</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">List</p>
+                    <h2>Products</h2>
+                </div>
+                <button id="btnRefresh" class="secondary-btn" type="button">Refresh</button>
+            </div>
+
+            <div id="messageBar" class="message-bar">Ready.</div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
